@@ -1,3 +1,6 @@
+import rules.chardetect as char
+
+
 def rule9(a, b, c, p, q, r):
     if c == 'ㅋ' or c == 'ㄲ':
         c = 'ㄱ'
@@ -97,8 +100,18 @@ def rule12(a, b, c, p, q, r):
 
 
 def rule13(a, b, c, p, q, r):
-    if p == 'ㅇ':
-        if c and c != 'ㅎ':
-            p = c
-            c = ''
+    if c not in char.gyeop_consonant:
+        if p == 'ㅇ':
+            if c and c != 'ㅎ':
+                p = c
+                c = ''
+    return (a, b, c, p, q, r)
+
+
+def rule14(a, b, c, p, q, r):
+    if c in char.gyeop_consonant:
+        if p == 'ㅇ':
+            (c, p) = char.gyeop_consonant[c]
+            if p == 'ㅅ':
+                p = 'ㅆ'
     return (a, b, c, p, q, r)
