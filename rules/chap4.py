@@ -94,3 +94,11 @@ def rule12(a, b, c, p, q, r):
             p = 'ㅊ'
             c = ''
     return (a, b, c, p, q, r)
+
+
+def rule13(a, b, c, p, q, r):
+    if p == 'ㅇ':
+        if c and c != 'ㅎ':
+            p = c
+            c = ''
+    return (a, b, c, p, q, r)

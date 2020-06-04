@@ -1,0 +1,1 @@
+gyeop_consonant= {''}
