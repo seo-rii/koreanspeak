@@ -11,31 +11,20 @@ for i in str:
     else:
         lst.append([False, i])
 
-if len(lst) == 1:
-    a = lst[0][1][0]
-    b = lst[0][1][1]
-    c = lst[0][1][2]
-    (a, b, c) = chap4.rule9(a, b, c, None, None, None)
-    (a, b, c) = chap4.rule10(a, b, c, None, None, None)
-    (a, b, c) = chap4.rule11(a, b, c, None, None, None)
-    lst[0][1][0] = a
-    lst[0][1][1] = b
-    lst[0][1][2] = c
+lst.append([False, ''])
 
 for i in range(len(lst) - 1):
     if lst[i][0]:
-        a = lst[i][1][0]
-        b = lst[i][1][1]
-        c = lst[i][1][2]
+        (a, b, c) = lst[i][1]
         if lst[i + 1][0]:
-            p = lst[i + 1][1][0]
-            q = lst[i + 1][1][1]
-            r = lst[i + 1][1][2]
+            (p, q, r) = lst[i + 1][1]
         else:
             p = False
             q = False
             r = False
 
+        (a, b, c, p, q, r) = chap4.rule16(a, b, c, p, q, r)
+        (a, b, c, p, q, r) = chap4.rule15(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule13(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule14(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule9(a, b, c, p, q, r)
@@ -43,12 +32,10 @@ for i in range(len(lst) - 1):
         (a, b, c, p, q, r) = chap4.rule11(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule12(a, b, c, p, q, r)
 
-        lst[i][1][0] = a
-        lst[i][1][1] = b
-        lst[i][1][2] = c
-        lst[i + 1][1][0] = p
-        lst[i + 1][1][1] = q
-        lst[i + 1][1][2] = r
+        lst[i][1] = [a, b, c]
+        lst[i + 1][1] = [p, q, r]
+
+lst.pop()
 
 for i in lst:
     if i[0]:

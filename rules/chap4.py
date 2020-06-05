@@ -115,3 +115,31 @@ def rule14(a, b, c, p, q, r):
             if p == 'ㅅ':
                 p = 'ㅆ'
     return (a, b, c, p, q, r)
+
+
+def rule15(a, b, c, p, q, r):
+    if p == 'ㅇ':
+        if q == 'ㅏ' or q == 'ㅓ' or q == 'ㅗ' or q == 'ㅜ' or q == 'ㅟ':
+            (a, b, c, p, q, r) = rule9(a, b, c, p, q, r)
+            (a, b, c, p, q, r) = rule10(a, b, c, p, q, r)
+            (a, b, c, p, q, r) = rule11(a, b, c, p, q, r)
+            (a, b, c, p, q, r) = rule12(a, b, c, p, q, r)
+            if c:
+                p = c
+                c = ''
+    return (a, b, c, p, q, r)
+
+
+def rule16(a, b, c, p, q, r):
+    if p == 'ㅇ':
+        if q == 'ㅣ' or q == 'ㅡ' or q == 'ㅔ':
+            if c == 'ㄷ' or c == 'ㅈ' or c == 'ㅊ' or c == 'ㅌ' or c == 'ㅎ':
+                p = 'ㅅ'
+                c = ''
+            if c == 'ㅋ':
+                p = 'ㄱ'
+                c = ''
+            if c == 'ㅍ':
+                p = 'ㅂ'
+                c = ''
+    return (a, b, c, p, q, r)
