@@ -1,5 +1,6 @@
 import hgtk
 import rules.chap4 as chap4
+import rules.chap5 as chap5
 
 str = input()
 lst = list()
@@ -23,10 +24,22 @@ for i in range(len(lst) - 1):
             q = False
             r = False
 
+
+        (a, b, c, p, q, r) = chap5.rule17(a, b, c, p, q, r)
+        (a, b, c, p, q, r) = chap5.rule20(a, b, c, p, q, r)
+
+
+
         (a, b, c, p, q, r) = chap4.rule16(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule15(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule13(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule14(a, b, c, p, q, r)
+
+        (a, b, c, p, q, r) = chap5.rule18(a, b, c, p, q, r)
+        (a, b, c, p, q, r) = chap5.rule19(a, b, c, p, q, r)
+
+
+
         (a, b, c, p, q, r) = chap4.rule9(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule10(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule11(a, b, c, p, q, r)
