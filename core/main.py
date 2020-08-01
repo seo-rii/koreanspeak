@@ -2,11 +2,11 @@ import hgtk
 import rules.chap4 as chap4
 import rules.chap5 as chap5
 
-str = input()
+query = input()
 lst = list()
 res = ""
 
-for i in str:
+for i in query:
     if hgtk.checker.is_hangul(i):
         lst.append([True, list(hgtk.letter.decompose(i))])
     else:
@@ -24,11 +24,8 @@ for i in range(len(lst) - 1):
             q = False
             r = False
 
-
         (a, b, c, p, q, r) = chap5.rule17(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap5.rule20(a, b, c, p, q, r)
-
-
 
         (a, b, c, p, q, r) = chap4.rule16(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule15(a, b, c, p, q, r)
@@ -37,8 +34,6 @@ for i in range(len(lst) - 1):
 
         (a, b, c, p, q, r) = chap5.rule18(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap5.rule19(a, b, c, p, q, r)
-
-
 
         (a, b, c, p, q, r) = chap4.rule9(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule10(a, b, c, p, q, r)
