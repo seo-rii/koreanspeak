@@ -14,10 +14,10 @@ before_install:
   - python -m pip install --upgrade pip
 
 install:
+  - cd core
   - pip3 install -r requirements.txt
 
 script:
-  - cd core
   - pyinstaller.exe --onefile --icon=logo.ico main.py
   - cd..
 
