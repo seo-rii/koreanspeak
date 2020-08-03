@@ -1,6 +1,7 @@
 import hgtk
 import rules.chap4 as chap4
 import rules.chap5 as chap5
+import rules.chap6 as chap6
 
 query = input()
 lst = list()
@@ -39,6 +40,8 @@ for i in range(len(lst) - 1):
         (a, b, c, p, q, r) = chap4.rule10(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule11(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule12(a, b, c, p, q, r)
+
+        (a, b, c, p, q, r) = chap6.rule23(a, b, c, p, q, r)
 
         lst[i][1] = [a, b, c]
         lst[i + 1][1] = [p, q, r]

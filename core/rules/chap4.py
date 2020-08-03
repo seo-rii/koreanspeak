@@ -1,14 +1,15 @@
-import rules.chardetect as char
+import rules.chardetect as charD
+import rules.charproc as charP
 
 
 def rule9(a, b, c, p, q, r):
     if c == 'ㅋ' or c == 'ㄲ':
         c = 'ㄱ'
-    if c == 'ㅅ' or c == 'ㅆ' or c == 'ㅈ' or c == 'ㅊ' or c == 'ㅌ':
+    if charD.isTypeOfㄷ(c):
         c = 'ㄷ'
     if c == 'ㅍ':
         c = 'ㅂ'
-    return (a, b, c, p, q, r)
+    return a, b, c, p, q, r
 
 
 def rule10(a, b, c, p, q, r):
@@ -23,7 +24,7 @@ def rule10(a, b, c, p, q, r):
             c = 'ㄹ'
     if c == 'ㅄ':
         c = 'ㅂ'
-    return (a, b, c, p, q, r)
+    return a, b, c, p, q, r
 
 
 def rule11(a, b, c, p, q, r):
@@ -36,7 +37,7 @@ def rule11(a, b, c, p, q, r):
         c = 'ㅁ'
     if c == 'ㄿ':
         c = 'ㅂ'
-    return (a, b, c, p, q, r)
+    return a, b, c, p, q, r
 
 
 def rule12(a, b, c, p, q, r):
@@ -87,34 +88,28 @@ def rule12(a, b, c, p, q, r):
                 p = 'ㄴ'
             c = ''
     if p == 'ㅎ':
-        if c == 'ㄱ':
-            p = 'ㅋ'
+        if c == 'ㄱ' or c == 'ㄷ' or c == 'ㅈ':
+            p = charP.toStrong(c)
             c = ''
-        elif c == 'ㄷ':
-            p = 'ㅌ'
-            c = ''
-        elif c == 'ㅈ':
-            p = 'ㅊ'
-            c = ''
-    return (a, b, c, p, q, r)
+    return a, b, c, p, q, r
 
 
 def rule13(a, b, c, p, q, r):
-    if c not in char.gyeop_consonant:
+    if c not in charD.gyeop_consonant:
         if p == 'ㅇ':
             if c and c != 'ㅎ':
                 p = c
                 c = ''
-    return (a, b, c, p, q, r)
+    return a, b, c, p, q, r
 
 
 def rule14(a, b, c, p, q, r):
-    if c in char.gyeop_consonant:
+    if c in charD.gyeop_consonant:
         if p == 'ㅇ':
-            (c, p) = char.gyeop_consonant[c]
+            (c, p) = charD.gyeop_consonant[c]
             if p == 'ㅅ':
                 p = 'ㅆ'
-    return (a, b, c, p, q, r)
+    return a, b, c, p, q, r
 
 
 def rule15(a, b, c, p, q, r):
@@ -127,7 +122,7 @@ def rule15(a, b, c, p, q, r):
             if c:
                 p = c
                 c = ''
-    return (a, b, c, p, q, r)
+    return a, b, c, p, q, r
 
 
 def rule16(a, b, c, p, q, r):
@@ -142,4 +137,4 @@ def rule16(a, b, c, p, q, r):
             if c == 'ㅍ':
                 p = 'ㅂ'
                 c = ''
-    return (a, b, c, p, q, r)
+    return a, b, c, p, q, r
