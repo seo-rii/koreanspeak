@@ -17,7 +17,9 @@ install:
   - pip3 install -r requirements.txt
 
 script:
+  - cd core
   - pyinstaller.exe --onefile --icon=logo.ico main.py
+  - cd..
 
 deploy:
   provider: releases
