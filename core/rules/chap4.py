@@ -18,10 +18,7 @@ def rule10(a, b, c, p, q, r):
     if c == 'ㄵ':
         c = 'ㄴ'
     if c == 'ㄼ' or c == 'ㄽ' or c == 'ㄾ':
-        if c == 'ㄼ' and (not (p == 'ㅇ') and p):
-            c = 'ㅂ'
-        else:
-            c = 'ㄹ'
+        c = 'ㄹ'
     if c == 'ㅄ':
         c = 'ㅂ'
     return a, b, c, p, q, r

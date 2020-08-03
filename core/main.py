@@ -27,6 +27,8 @@ for i in range(len(lst) - 1):
 
         (a, b, c, p, q, r) = chap5.rule17(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap5.rule20(a, b, c, p, q, r)
+        (a, b, c, p, q, r) = chap6.rule24(a, b, c, p, q, r)
+        (a, b, c, p, q, r) = chap6.rule25(a, b, c, p, q, r)
 
         (a, b, c, p, q, r) = chap4.rule16(a, b, c, p, q, r)
         (a, b, c, p, q, r) = chap4.rule15(a, b, c, p, q, r)
