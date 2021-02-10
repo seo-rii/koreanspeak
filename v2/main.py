@@ -14,7 +14,7 @@ HANGUL_CODE = list('\0\1 ㄱㄲㄳㄴㄵㄶㄷㄸㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂ�
 
 MAX_LENGTH = 7 * 3
 TOKEN_SIZE = len(HANGUL_CODE) + 1
-EPOCH = 300
+EPOCH = 1000
 
 
 def korean_separation(string):
@@ -40,12 +40,19 @@ def str_to_code(string):
 
 def code_to_str(code):
     s = ''
-    for (a, b, c) in zip(code[::3], code[1::3], code[2::3]):
+    i = 0
+    while i < len(code) - 2:
+        (a, b, c) = (code[i], code[i + 1], code[i + 2])
         try:
             s += chr(0xac00 + 28 * 21 * HANGUL_FIRST.index(HANGUL_CODE[a - 1]) + 28 * HANGUL_MIDDLE.index(
                 HANGUL_CODE[b - 1]) + HANGUL_LAST.index(HANGUL_CODE[c - 1]))
+            i += 3
         except:
-            pass
+            s += HANGUL_CODE[a - 1]
+            i += 1
+    while i < len(code):
+        s += HANGUL_CODE[code[i] - 1]
+        i += 1
     return s
 
 
@@ -133,5 +140,9 @@ def predict(st, model):
     return code_to_str(decoded)
 
 
-model = build_model(*load_data('data.csv'))
-print(predict('갓', model))
+model = build_model(*load_data('test.csv'))
+
+while True:
+    print('Input > ', end='')
+    pr = input()
+    print(predict(pr, model))
